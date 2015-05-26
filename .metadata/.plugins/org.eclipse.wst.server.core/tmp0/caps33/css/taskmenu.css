@@ -1,0 +1,45 @@
+.tasks-menu ul {padding:0; margin:0; list-style:none; height:38px; position:relative; z-index:105; font-family:arial, verdana, sans-serif;}
+.tasks-menu ul li.menu-bar {display:block; float:left;}
+.tasks-menu ul li a.menu-header {display:block; float:left; height:35px; line-height:33px; color:#FFFFFF; text-decoration:none; font-size:12px; font-weight:bold; padding:0 0 0 0; cursor:pointer;}
+.tasks-menu ul li a.menu-header span {float:left; display:block; padding:0 0 0 12px; height:35px;}
+.tasks-menu ul li a.menu-header span.down {float:left; display:block; background: url(../images/taskmenu/arrowdownW.gif) no-repeat right center;padding:0 20px 0 10px; height:35px;}
+.tasks-menu ul li:hover a.menu-header span.down {padding-bottom:3px; background: url(../images/taskmenu/arrowdownW.gif) no-repeat right center;}
+
+.tasks-menu ul li:hover {position:relative; z-index:200;}
+
+.tasks-menu ul li:hover ul.submenu
+{left:12px; top:28px; padding:3px; white-space:nowrap; width:180px; height:auto; z-index:300;}
+.tasks-menu ul li:hover ul.submenu li
+{display:block; height:20px; position:relative; float:left; width:180px; font-weight:bold;}
+.tasks-menu ul li:hover ul.submenu li a
+{display:block; font-size:11px; height:18px; width:178px; line-height:18px; text-indent:5px; color:#FFFFFF; text-decoration:none;}
+
+.tasks-menu ul li ul.submenu li a.submenu-group {background:url(../images/taskmenu/arrowH.gif) 170px 6px no-repeat;}
+.tasks-menu ul li:hover ul.submenu li a:hover {background:#A9A9A9 none repeat scroll 0%; color:#FFFFFF; border-color:#FFFFFF;}
+.tasks-menu ul li:hover ul.submenu li a.submenu-group:hover {background:#A9A9A9 url(../images/taskmenu/arrowW.gif) 170px 6px no-repeat; color:#FFFFFF;}
+
+.tasks-menu ul li b {display:block; font-size:11px; height:18px; width:180px; line-height:18px; margin-bottom:3px; text-indent:6px; color:#ff6; border-bottom:1px solid #ff6; cursor:default;}
+
+.tasks-menu ul li:hover li:hover ul,
+.tasks-menu ul li:hover li:hover li:hover ul,
+.tasks-menu ul li:hover li:hover li:hover li:hover ul,
+.tasks-menu ul li:hover li:hover li:hover li:hover li:hover ul
+{left:148px; top:-1px; padding:0px; white-space:nowrap; width:180px; z-index:400; height:auto;}
+
+.tasks-menu ul ul, 
+.tasks-menu ul li:hover ul ul,
+.tasks-menu ul li:hover li:hover ul ul,
+.tasks-menu ul li:hover li:hover li:hover ul ul,
+.tasks-menu ul li:hover li:hover li:hover li:hover ul ul
+{position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
+
+.tasks-menu ul li:hover li:hover a.submenu-group,
+.tasks-menu ul li:hover li:hover li:hover a.submenu-group,
+.tasks-menu ul li:hover li:hover li:hover li:hover a.submenu-group,
+.tasks-menu ul li:hover li:hover li:hover li:hover li:hover a.submenu-group
+{background:#A9A9A9 url(../images/taskmenu/arrowW.gif) 150px 6px no-repeat; color:#FFFFFF; border-color:#fff;} 
+
+.tasks-menu ul li:hover li:hover li a.submenu-group,
+.tasks-menu ul li:hover li:hover li:hover li a.submenu-group,
+.tasks-menu ul li:hover li:hover li:hover li:hover li a.submenu-group
+{background:#A9A9A9 url(../images/taskmenu/arrowW.gif) 150px 6px no-repeat; color:#FFFFFF; border-color:#fff;} 

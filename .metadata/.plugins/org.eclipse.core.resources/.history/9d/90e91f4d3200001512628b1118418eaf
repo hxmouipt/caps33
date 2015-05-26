@@ -1,0 +1,117 @@
+
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import com.esri.adf.web.data.WebGraphics;
+import com.esri.adf.web.data.GraphicElement;
+import com.esri.adf.web.data.geometry.WebGeometry;
+import com.esri.adf.web.data.geometry.WebPoint;
+import com.esri.adf.web.data.symbol.WebSimpleMarkerSymbol;
+import com.esri.adf.web.faces.event.TaskEvent;
+public class GeorssTask{
+    private String georssURL = null;
+    private Hashtable hash;
+
+    public void setGeorssURL(String georssURL){
+        this.georssURL = georssURL;
+    }
+    public String getGeorssURL(){
+        return georssURL;
+    }
+    public void addGeorssSource(TaskEvent event){
+        try{
+            getGeorssCoords(getGeorssURL());
+            if (hash.size() > 0){
+                WebSimpleMarkerSymbol pSymbol = new WebSimpleMarkerSymbol();
+                pSymbol.setColor("0,255,255");
+                pSymbol.setMarkerType(4);
+                pSymbol.setOutlineColor("0,0,0");
+                pSymbol.setWidth(20);
+                Enumeration locations = hash.keys();
+                while (locations.hasMoreElements()){
+                    String[] strLoc = locations.nextElement().toString().split(":");
+                    if (strLoc.length >= 2){
+                        WebPoint webPoint = new WebPoint();
+                        webPoint.putCoords(Double.parseDouble(strLoc[0]),
+                            Double.parseDouble(strLoc[1]));
+                        if (webPoint != null){
+                            WebGeometry webGeometry = 
+
+                            (WebGeometry)webPoint;
+                            GraphicElement graphicElem = 
+
+
+                            new GraphicElement();
+                            graphicElem.setGeometry(webGeometry);
+                            graphicElem.setSymbol(pSymbol);
+                            event.getWebContext().getWebGraphics().addGraphics
+                                (graphicElem);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void clearGraphics(TaskEvent event){
+        WebGraphics graphics = event.getWebContext().getWebGraphics();
+        if (graphics !=   null)
+            graphics.clearGraphics();
+    }
+    public Hashtable getGeorssCoords(String urlPath){
+        Document doc;
+        try{
+            DocumentBuilderFactory docBuilderFactory = 
+
+
+            DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+            URL url = new URL(urlPath);
+            URLConnection urlConnection = 
+
+
+            url.openConnection();
+            urlConnection.connect();
+            doc = docBuilder.parse(urlConnection.getInputStream());
+            doc.normalize();
+            NodeList listOfFeatures = 
+
+
+            doc.getElementsByTagName("item");
+            if (hash =  = null)
+                hash = new Hashtable();
+            for (int i = 0; i < listOfFeatures.getLength(); i++){
+                Element featElem = (Element)listOfFeatures.item(i);
+                String coord = new String(featElem.getElementsByTagName("geo:long")
+                    .item(0).getFirstChild().getNodeValue() + ":" +
+                    featElem.getElementsByTagName("geo:lat").item(0).getFirstChild()
+                    .getNodeValue());
+                Map map = new HashMap();
+                for (int j = 0; j < featElem.getChildNodes().getLength(); j++){
+                    NodeList pAttrList = featElem.getChildNodes();
+                    Node attrNode = pAttrList.item(j);
+                    if (attrNode.getNodeType() == 1){
+                        map.put(attrNode.getNodeName().toString(),
+                            attrNode.getFirstChild().getNodeValue());
+                    }
+                }
+                hash.put(coord, map);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return hash;
+    }
+}

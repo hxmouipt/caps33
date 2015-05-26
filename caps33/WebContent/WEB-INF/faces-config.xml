@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN" "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+  <managed-bean>
+    <managed-bean-name>mapContext</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebContext</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>attributes</property-name>
+      <map-entries>
+        <map-entry>
+          <key>map</key>
+          <value>#{map}</value>
+        </map-entry>
+        <map-entry>
+          <key>overview</key>
+          <value>#{overview}</value>
+        </map-entry>
+        <map-entry>
+          <key>toc</key>
+          <value>#{toc}</value>
+        </map-entry>
+        <map-entry>
+          <key>graphics</key>
+          <value>#{graphics}</value>
+        </map-entry>
+        <map-entry>
+          <key>query</key>
+          <value>#{query}</value>
+        </map-entry>
+        <map-entry>
+          <key>history</key>
+          <value>#{extentHistory}</value>
+        </map-entry>
+        <map-entry>
+          <key>geocode</key>
+          <value>#{geocode}</value>
+        </map-entry>
+        <map-entry>
+          <key>results</key>
+          <value>#{results}</value>
+        </map-entry>
+        <map-entry>
+          <key>webappResults</key>
+          <value>#{webappResults}</value>
+        </map-entry>
+        <map-entry>
+          <key>webappNorthArrow</key>
+          <value>#{webappNorthArrow}</value>
+        </map-entry>
+        <map-entry>
+          <key>webappScaleBar</key>
+          <value>#{webappScaleBar}</value>
+        </map-entry>
+        <map-entry>
+          <key>webappMapToolsTask</key>
+          <value>#{webappMapToolsTask}</value>
+        </map-entry>
+        <map-entry>
+          <key>webappSearchAttributesTask</key>
+          <value>#{webappSearchAttributesTask}</value>
+        </map-entry>
+        <map-entry>
+          <key>identifyResult</key>
+          <value>#{identifyResult}</value>
+        </map-entry>        
+        <map-entry>
+          <key>webappSecurityInfo</key>
+          <value>#{webappSecurityInfo}</value>
+        </map-entry>
+      </map-entries>
+    </managed-property>
+    <managed-property>
+      <property-name>resources</property-name>
+      <map-entries>
+        <!-- Resources [START] -->
+        <!-- Resources [END] -->
+        <map-entry>
+          <key>defaultGraphicsResource</key>
+          <value>#{defaultGraphicsResource}</value>
+        </map-entry>
+      </map-entries>
+    </managed-property>
+  </managed-bean>
+
+  <!-- MapViewer Phase Listener -->
+  <lifecycle>
+    <phase-listener>com.esri.adf.web.templates.MapViewerPhaseListener</phase-listener>
+    <phase-listener>com.esri.adf.web.templates.AjaxCommandPhaseListener</phase-listener>
+  </lifecycle>
+  
+  
+  <!--Application Beans-->
+  <managed-bean>
+    <managed-bean-name>copyrightCommand</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.ajax.command.CopyrightCommand</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>identifyResultCommand</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.ajax.command.IdentifyResultCommand</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>addIdentifyToResultsCommand</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.ajax.command.AddIdentifyToResultsCommand</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>clearIdentifyResultCommand</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.ajax.command.ClearIdentifyResultCommand</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>saveGPTaskResultCommand</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.ajax.command.SaveGPTaskResultCommand</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>identifyResult</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.IdentifyResult</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>identifyResultKey</property-name>
+      <value>Identify</value>
+    </managed-property>    
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>webappResults</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.MapViewerResults</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>webappNorthArrow</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebNorthArrow</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>fontCharacter</property-name>
+      <value>73</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>webappScaleBar</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebScaleBar</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>type</property-name>
+      <value>DoubleAlternating</value>
+    </managed-property>
+    <managed-property>
+      <property-name>units</property-name>
+      <value>1</value>
+    </managed-property>
+  </managed-bean>
+
+  <!-- Managed bean for ArcGIS Server resource [START] -->
+  <!-- Managed bean for ArcGIS Server resource [END] -->
+
+  <!-- Managed bean for ArcGIS Server user [START] -->
+  <!-- Managed bean for ArcGIS Server user [END] -->
+
+  <!-- Managed bean for ArcGIS Server Web Service resource [START] -->
+  <!-- Managed bean for ArcGIS Server Web Service resource [END] -->
+
+  <!-- Managed bean for ArcGIS Server EJB resource [START] -->
+  <!-- Managed bean for ArcGIS Server EJB resource [END] -->
+
+  <!-- Managed bean for ArcIMS resource [START] -->
+  <!-- Managed bean for ArcIMS resource [END] -->
+
+  <!-- Managed bean for WMS resource [START] -->
+  <!-- Managed bean for WMS resource [END] -->
+
+  <!-- Managed bean for ArcWeb service resource [START] -->
+  <!-- Managed bean for ArcWeb service resource [END] -->
+
+  <!-- Tasks [START] mandy 2015-5-8 -->
+
+<!--   <managed-bean>
+    <managed-bean-name>myTask</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.tasks.MyTask</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean> -->
+
+   <managed-bean>  
+    <managed-bean-name> addGeorssTask </managed-bean-name>  
+    <managed-bean-class> com.esri.adf.web.templates.task.GeorssTask </managed-bean-class>
+    <managed-bean-scope> none </managed-bean-scope>  
+   </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>webappMapToolsTask</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.tasks.MapToolsTask</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>taskInfo</property-name>
+      <value>#{webappMapToolsTaskInfo}</value>
+    </managed-property>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>webappMapToolsTaskInfo</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.task.MapToolsTaskInfo</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean> 
+
+  <managed-bean>
+    <managed-bean-name>webappSearchAttributesTask</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.tasks.SearchAttributesTask</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  <!-- Tasks [END] -->
+
+  <managed-bean>
+    <managed-bean-name>webappSecurityInfo</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.SecurityInfo</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  
+  <navigation-rule> 
+    <from-view-id>/mapviewer.jsp</from-view-id> 
+    <navigation-case> 
+      <from-outcome>login</from-outcome> 
+      <to-view-id>/mapviewer.jsp</to-view-id> 
+    </navigation-case>    
+  </navigation-rule>
+</faces-config>

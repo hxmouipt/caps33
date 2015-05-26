@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<resource>
+  <toc>
+    <openResultLinkText>Open Result</openResultLinkText>
+    <fileuploadfailed>File upload Failed</fileuploadfailed>
+  </toc>
+  <edittask>
+    <closeWindowWithEditsMessage>Edits will be discarded, exit editing?</closeWindowWithEditsMessage>
+    <settings>Settings</settings>
+  </edittask>
+  <task>
+    <help>Help</help>
+  </task>
+</resource>

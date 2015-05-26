@@ -1,0 +1,431 @@
+
+<project default="about" name="template">
+	<!-- ========================================= -->
+	<!-- load environment variables -->
+	<!-- ========================================= -->
+  <property file="build.properties"/>
+  <xmlproperty file="properties.xml"/>
+  <property environment="env"/>
+  <property name="arcgis.java.home" value="${env.ARCGISHOME}/java"/>
+  <property name="arcgisant.home" value="${arcgis.java.home}/tools/ant"/>
+	
+	<!-- ========================================= -->
+	<!-- library dependency settings -->
+	<!-- ========================================= -->
+
+  <property name="adf.webcontrols.dir" location="${arcgis.java.home}/web/webcontrols"/>
+  <property name="adf.webcontrols.lib" location="${adf.webcontrols.dir}/WEB-INF/lib"/>
+  <property name="sample.lib" location="${basedir}/WebContent/WEB-INF/lib"/>
+  <property name="samples.build.dir" location="build"/>
+  <property name="sample.build.lib" value="${samples.build.dir}/${sample.name}/WEB-INF/lib"/>
+  <property name="agspassword.encrypted" value="true"/>
+	<!-- set resource for ant-contrib -->
+  <path id="ant.classpath">
+    <fileset dir="${arcgisant.home}/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    <classpath refid="ant.classpath"/>
+  </taskdef>
+
+  <taskdef resource="com/esri/arcgis/util/ant/arcgisant_tasks.properties">
+    <classpath refid="ant.classpath"/>
+  </taskdef>
+	
+	<!-- jar file mappings -->
+  <path id="adf.classpath">
+    <fileset dir="${adf.webcontrols.lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <path id="sample.classpath">
+    <fileset dir="${sample.lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+    <fileset dir="${adf.webcontrols.lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="build" depends="clean-build" description="Builds the web application">
+    <propertyfile file="build.properties" comment="build properties">
+      <entry key="build.num" value="1"/>
+    </propertyfile>
+    <copy todir="${samples.build.dir}/${sample.name}">
+      <fileset dir="${adf.webcontrols.dir}">
+			<!--	<exclude name="**/lib/*.*"/> --></fileset>
+    </copy>
+    <copy todir="${samples.build.dir}/${sample.name}" overwrite="true">
+      <fileset dir="WebContent">
+        <include name="**/*.*"/>
+      </fileset>
+    </copy>
+    <propertyfile file="build.properties" comment="build properties">
+      <entry key="tasks" value="" />
+      <entry key="ags.added" value="" />
+      <entry key="agsext.added" value="" />
+      <entry key="agsws.added" value="" />
+      <entry key="agswsext.added" value="" />
+      <entry key="aims.added" value="" />
+      <entry key="wms.added" value="" />
+      <entry key="aws.added" value="" />
+    </propertyfile>
+    <antcall target="getinput" inheritAll="false"/> 
+    <property file="build.properties"/>
+    <antcall target="add-tasks" inheritall="false"/>
+    <antcall target="compile"/>
+    <antcall target="create-war"/>
+  </target>
+
+  <target name="continue">
+    <echo></echo>
+    <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+    <echo>Enter the type of resource to add:</echo>
+    <echo>	(1) ArcGIS Server</echo>
+    <echo>	(2) ArcGIS Server Web Service</echo>
+    <echo>	(3) ArcGIS Server EJB</echo>
+    <echo>	(4) ArcIMS</echo>
+    <echo>	(5) OGC-WMS</echo>
+    <echo>	(6) ArcWeb Service</echo>
+    <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+    <echo></echo>
+    <input message="Enter the value matching the resource to add:" validargs="1,2,3,4,5,6" addproperty="resource.name" />
+    <propertyfile file="build.properties" comment="build properties">
+      <entry key="tasks" default="" operation="+" value=",${adf.common.task-list}"/>
+    </propertyfile>
+    <switch value="${resource.name}">
+      <case value="1">
+        <echo></echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo>Enter Parameters for ArcGIS Server</echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo></echo>
+        <input message="Enter Username:" addproperty="agsusername" />
+<!--	<input message="Enter Password:" addproperty="agspassword" /> -->
+        <echo>Enter Password in the dialog:</echo>
+        <echo></echo>
+        <esripassword addproperty="agspassword" />
+        <input message="Enter Domain:" addproperty="agsdomain" />
+        <input message="Enter ArcGIS Server name:" addproperty="agsserver" />
+        <input message="Enter server object name:" addproperty="agsserverobject" />
+        <xmlproperty file="properties.xml"/>
+        <input message="Do you want to enable extensions:" validargs="y,n" addproperty="c1" />
+        <if>
+          <equals arg1="${c1}" arg2="n"/>
+          <then>
+            <propertyfile file="build.properties" comment="build properties">
+              <entry key="build.num" type="int" default="1" operation="+" />
+              <entry key="ags.added" value="true" />
+              <entry key="tasks" default="" operation="+" value=",${adf.ags.task-list}"/>
+            </propertyfile>
+            <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+              <replacefilter token="&lt;!-- Managed bean for ArcGIS Server resource [END] --&gt;" value="${adf.ags.managedbean}" />
+              <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.ags.resource}" />
+              <replacefilter token="&lt;!-- Managed bean for ArcGIS Server user [END] --&gt;" value="${adf.ags.user}" />
+              <replacefilter token="[AGS_DOMAIN]" value="${agsdomain}"/>
+              <replacefilter token="[AGS_USER_NAME]" value="${agsusername}"/>
+              <replacefilter token="[AGS_PASSWORD]" value="${agspassword}"/>
+              <replacefilter token="[AGS_PASSWORD_ENCRYPTED]" value="${agspassword.encrypted}"/>
+              <replacefilter token="[COUNTER]" value="${build.num}"/>
+              <replacefilter token="[AGS_HOST]" value="${agsserver}"/>
+              <replacefilter token="[AGS_SERVER_OBJECT_NAME]" value="${agsserverobject}"/>
+            </replace>
+          </then>
+          <else>
+            <propertyfile file="build.properties" comment="build properties">
+              <entry key="build.num" type="int" default="1" operation="+" />
+              <entry key="agsext.added" value="true" />
+              <entry key="tasks" default="" operation="+" value=",${adf.agsext.task-list}"/>
+            </propertyfile>
+            <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+              <replacefilter token="&lt;!-- Managed bean for ArcGIS Server resource [END] --&gt;" value="${adf.agsext.managedbean}" />
+              <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.agsext.resource}" />
+              <replacefilter token="&lt;!-- Managed bean for ArcGIS Server user [END] --&gt;" value="${adf.agsext.user}" />
+              <replacefilter token="[AGS_DOMAIN]" value="${agsdomain}"/>
+              <replacefilter token="[AGS_USER_NAME]" value="${agsusername}"/>
+              <replacefilter token="[AGS_PASSWORD]" value="${agspassword}"/>
+              <replacefilter token="[AGS_PASSWORD_ENCRYPTED]" value="${agspassword.encrypted}"/>
+              <replacefilter token="[COUNTER]" value="${build.num}"/>
+              <replacefilter token="[AGS_HOST]" value="${agsserver}"/>
+              <replacefilter token="[AGS_SERVER_OBJECT_NAME]" value="${agsserverobject}"/>
+            </replace>
+          </else>
+        </if>
+      </case>
+      <case value="2">
+        <echo></echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo> Enter Parameters for ArcGIS Server Web service </echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo></echo>
+        <input message="Enter ArcGIS server web service URL:" addproperty="agswsurl" />
+        <xmlproperty file="properties.xml"/>
+        <input message="Do you want to extensions:" validargs="y,n" addproperty="c2" />
+        <if>
+          <equals arg1="${c2}" arg2="n"/>
+          <then>
+            <propertyfile file="build.properties" comment="build properties">
+              <entry key="build.num" type="int" default="1" operation="+" />
+              <entry key="agsws.added" value="true" />
+            </propertyfile>
+            <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+              <replacefilter token="&lt;!-- Managed bean for ArcGIS Server Web Service resource [END] --&gt;" value="${adf.agsws.managedbean}" />
+              <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.agsws.resource}" />
+              <replacefilter token="[COUNTER]" value="${build.num}"/>
+              <replacefilter token="[AGSWS_END_POINT_URL]" value="${agswsurl}"/>
+            </replace>
+          </then>
+          <else>
+            <propertyfile file="build.properties" comment="build properties">
+              <entry key="build.num" type="int" default="1" operation="+" />
+              <entry key="agswsext.added" value="true" />
+              <entry key="tasks" default="" operation="+" value=",${adf.agswsext.task-list}"/>
+            </propertyfile>
+            <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+              <replacefilter token="&lt;!-- Managed bean for ArcGIS Server Web Service resource [END] --&gt;" value="${adf.agswsext.managedbean}" />
+              <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.agswsext.resource}" />
+              <replacefilter token="[COUNTER]" value="${build.num}"/>
+              <replacefilter token="[AGSWS_END_POINT_URL]" value="${agswsurl}"/>
+            </replace>
+          </else>
+        </if>
+      </case>
+      <case value="3">
+        <echo></echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo> Enter Parameters for ArcGIS Server EJB </echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo></echo>
+        <input message="Enter the JNDI for Map EJB:" addproperty="agsejb.map.jndi" />
+        <xmlproperty file="properties.xml"/>
+        <propertyfile file="build.properties" comment="build properties">
+          <entry key="build.num" type="int" default="1" operation="+" />
+          <entry key="agsejb.added" value="true" />
+          <entry key="tasks" default="" operation="+" value=",${adf.agsejb.task-list}"/>
+        </propertyfile>
+        <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+          <replacefilter token="&lt;!-- Managed bean for ArcGIS Server EJB resource [END] --&gt;" value="${adf.agsejb.managedbean}" />
+          <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.agsejb.resource}" />
+          <replacefilter token="[COUNTER]" value="${build.num}"/>
+          <replacefilter token="[AGSEJB_MAP_JNDI_NAME]" value="${agsejb.map.jndi}"/>
+        </replace>
+        <input message="Do you want to add additional key/value entries::" validargs="y,n" addproperty="continue6" />
+        <if>
+          <equals arg1="${continue6}" arg2="y"/>
+          <then>
+            <antcall target="ejb-more-key-value" inheritAll="false"/>
+          </then>
+        </if>
+        <input message="Do you want to add additional appserver specific files:" validargs="y,n" addproperty="continue4" />
+        <if>
+          <equals arg1="${continue4}" arg2="y"/>
+          <then>
+            <antcall target="ejb-copy-more-files" inheritAll="false"/>
+          </then>
+        </if>
+      </case>
+      <case value="4">
+        <echo></echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo> Enter Parameters for ArcIMS </echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo></echo>
+        <!-- <input message="Enter ArcIMS Application Server name:" addproperty="aimsserver" />
+        <input message="Enter ArcIMS Application Server port:" addproperty="aimsport" />
+        -->
+        <input message="Enter ArcIMS Server name(e.g. myserver) or URL(http://myserver:80):" addproperty="aimsserver" />
+        <input message="Enter ArcIMS Server port(e.g. 5300 for TCP or skip if using HTTP):" addproperty="aimsport_tmp" />
+        <if>
+          <equals arg1="${aimsport_tmp}" arg2="" />
+          <then>
+            <property name="aimsport" value="0" />
+          </then>
+          <else>
+            <property name="aimsport" value="${aimsport_tmp}" />
+          </else>
+        </if>
+        <input message="Enter ArcIMS Service name:" addproperty="aimsservice" />
+        <xmlproperty file="properties.xml"/>
+        <propertyfile file="build.properties" comment="build properties">
+          <entry key="build.num" type="int" default="1" operation="+" />
+          <entry key="aims.added" value="true" />
+          <entry key="tasks" default="" operation="+" value=",${adf.aims.task-list}"/>
+        </propertyfile>
+        <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+          <replacefilter token="&lt;!-- Managed bean for ArcIMS resource [END] --&gt;" value="${adf.aims.managedbean}" />
+          <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.aims.resource}" />
+          <replacefilter token="[COUNTER]" value="${build.num}"/>
+          <replacefilter token="[AIMS_HOST_NAME]" value="${aimsserver}"/>
+          <replacefilter token="[AIMS_PORT]" value="${aimsport}"/>
+          <replacefilter token="[AIMS_SERVICE_NAME]" value="${aimsservice}"/>
+        </replace>
+      </case>
+      <case value="5">
+        <echo></echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo> Enter Parameters for OGC-WMS </echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo></echo>
+        <input message="Enter WMS URL:" addproperty="wmsurl" />
+        <xmlproperty file="properties.xml"/>
+        <propertyfile file="build.properties" comment="build properties">
+          <entry key="build.num" type="int" default="1" operation="+" />
+          <entry key="wms.added" value="true" />
+          <entry key="tasks" default="" operation="+" value=",${adf.wms.task-list}"/>
+        </propertyfile>
+        <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+          <replacefilter token="&lt;!-- Managed bean for WMS resource [END] --&gt;" value="${adf.wms.managedbean}" />
+          <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.wms.resource}" />
+          <replacefilter token="[COUNTER]" value="${build.num}"/>
+          <replacefilter token="[WMS_URL]" value="${wmsurl}"/>
+        </replace>
+      </case>
+      <case value="6">
+        <echo></echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo> Enter Parameters for Arcweb Services </echo>
+        <echo>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</echo>
+        <echo></echo>
+        <input message="Enter username:" addproperty="awsusername" />
+<!--	<input message="Enter password:" addproperty="awspassword" /> -->
+        <echo>Enter Password in the dialog:</echo>
+        <esripassword addproperty="awspassword" encryptPassword="false"/>
+        <input message="Enter datasource name:" addproperty="awsdatasource" />
+        <xmlproperty file="properties.xml"/>
+        <propertyfile file="build.properties" comment="build properties">
+          <entry key="build.num" type="int" default="1" operation="+" />
+          <entry key="aws.added" value="true" />
+          <entry key="tasks" default="" operation="+" value=",${adf.aws.task-list}"/>
+        </propertyfile>
+        <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+          <replacefilter token="&lt;!-- Managed bean for ArcWeb service resource [END] --&gt;" value="${adf.aws.managedbean}" />
+          <replacefilter token="&lt;!-- Resources [END] --&gt;" value="${adf.aws.resource}" />
+          <replacefilter token="[COUNTER]" value="${build.num}"/>
+          <replacefilter token="[USER_NAME]" value="${awsusername}"/>
+          <replacefilter token="[PASSWORD]" value="${awspassword}"/>
+          <replacefilter token="[AWS_DATA_SOURCE]" value="${awsdatasource}"/>
+        </replace>
+      </case>
+      <default>
+      </default>
+    </switch>
+    <echo></echo>
+    <input message="Do you want to add another resource:" validargs="y,n" addproperty="continue2" />
+    <if>
+      <equals arg1="${continue2}" arg2="y"/>
+      <then>
+        <antcall target="getinput" inheritAll="false"/>
+      </then>
+    </if>
+  </target>
+
+  <target name="compile">
+		<path id="arcgis.home">
+			<pathelement path="${env.ARCGISHOME}"/>
+		</path>
+		<pathconvert property="arcgis.home.clean" refid="arcgis.home" targetos="unix" />
+		<replace file="${samples.build.dir}/${sample.name}/WEB-INF/classes/PeHome.properties">
+			<replacefilter token="[ARCGIS_HOME]" value="${arcgis.home.clean}" />
+		</replace>
+		<javac srcdir="JavaSource" destdir="${samples.build.dir}/${sample.name}/WEB-INF/classes">
+			<classpath refid="sample.classpath"/>
+		</javac>
+  </target>
+
+  <target name="clean-build">
+    <delete dir="${samples.build.dir}/${sample.name}"/>
+    <delete file="${samples.build.dir}/${sample.name}.war"/>
+  </target>
+
+  <target name="create-war">
+    <jar destfile="${samples.build.dir}/${sample.name}.war" basedir="${samples.build.dir}/${sample.name}"/>
+  </target>
+
+  <target name="copy-file">
+    <copy verbose="false" file="${adf.webcontrols.lib}/${file}" tofile="${sample.build.lib}/${file}"/>
+  </target>
+
+  <target name="about">
+    <echo message="This script builds web application."/>
+  </target>
+
+  <target name="getinput">
+    <antcall target="continue" />
+  </target>
+
+  <target name="ejb-more-key-value">
+    <antcall target="continue-ejb-keyvalue" />
+  </target>
+
+  <target name="ejb-copy-more-files">
+    <antcall target="continue-ejb-copy" />
+  </target>
+
+  <target name="continue-ejb-keyvalue">
+    <input message="Enter key:" addproperty="agsejb.key" />
+    <input message="Enter value:" addproperty="agsejb.value" />
+    <xmlproperty file="properties.xml"/>
+    <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+      <replacefilter token="&lt;!-- AGSEJB APPSERVER SPECIFIC ENTRIES [END] --&gt;" value="${adf.agsejb.appserver.property}" />
+      <replacefilter token="[AGSEJB_KEY]" value="${agsejb.key}"/>
+      <replacefilter token="[AGSEJB_VALUE]" value="${agsejb.value}"/>
+    </replace>
+    <input message="Do you want to add another key/value entry:" validargs="y,n" addproperty="continue3" />
+    <if>
+      <equals arg1="${continue3}" arg2="y"/>
+      <then>
+        <antcall target="ejb-more-key-value" inheritAll="false"/>
+      </then>
+    </if>
+  </target>
+
+  <target name="continue-ejb-copy">
+    <input message="Enter the file path::" addproperty="agsejb.more.file" />
+    <copy todir="${sample.build.lib}">
+      <fileset file="${agsejb.more.file}" />
+    </copy>
+    <input message="Do you want to add another appserver specific file:" validargs="y,n" addproperty="continue5" />
+    <if>
+      <equals arg1="${continue5}" arg2="y"/>
+      <then>
+        <antcall target="ejb-copy-more-files" inheritAll="false"/>
+      </then>
+    </if>
+  </target>
+
+  <target name="add-task">
+    <if>
+      <not>
+        <equals arg1="${task}" arg2="EMPTY"/>
+      </not>
+      <then>
+        <input message="Do you want to add ${task} task::" validargs="y,n" addproperty="t1" />
+        <if>
+          <equals arg1="${t1}" arg2="y"/>
+          <then>
+            <propertycopy name="task1" from="adf.tasks.${task}.managedbean" />
+            <replace file="${samples.build.dir}/${sample.name}/WEB-INF/faces-config.xml">
+              <replacefilter token="&lt;!-- Tasks [END] --&gt;" value="${task1}" />
+            </replace>
+            <propertycopy name="task2" from="adf.tasks.${task}.jsptag" />
+            <propertycopy name="task3" from="adf.tasks.${task}.htmloption" />
+            <replace file="${samples.build.dir}/${sample.name}/mapviewer.jsp">
+              <replacefilter token="&lt;!-- TASKS --&gt;" value="${task2}" />
+              <replacefilter token="&lt;!-- TASK OPTIONS --&gt;" value="${task3}" />
+            </replace>
+          </then>
+        </if>
+      </then>
+    </if>
+  </target>
+
+  <target name="add-tasks">
+    <property file="build.properties"/>
+    <esriuniquelist inputlist="${tasks}" outputlist="unique.tasks.list" delimiter="," />
+    <foreach list="${unique.tasks.list}" delimiter="," target="add-task" param="task" inheritall="true"/>
+  </target>
+
+</project>

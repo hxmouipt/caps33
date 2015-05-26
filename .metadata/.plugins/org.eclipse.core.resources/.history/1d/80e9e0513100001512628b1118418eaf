@@ -1,0 +1,34 @@
+#header {
+  background-image: url('../themes/purple2/header-purple2.jpg');
+  background-color: #9E9CFF;
+}
+
+#subHeader {
+  background-image: url('../themes/purple2/gradient-purple2-1x30.gif');
+}
+
+.panelHeaderDiv {
+  background-image: url('../themes/purple2/gradient-purple2-1x24.gif');
+  border-bottom:none;
+  border-top:none;
+}
+
+table.esriWindowTitleBar {
+  background-image:url('../themes/purple2/gradient-purple2-1x24.gif');
+}
+
+.panelHeaderLabel {
+  color:#fff;
+}
+.appLink, .appLink:visited, .appLink:hover, .appLink:active {
+  font-size:70%;
+  color:#fff;
+  text-decoration:underline;
+}
+
+.tasks-menu ul li:hover ul.submenu,
+.tasks-menu ul li:hover li:hover ul,
+.tasks-menu ul li:hover li:hover li:hover ul,
+.tasks-menu ul li:hover li:hover li:hover li:hover ul,
+.tasks-menu ul li:hover li:hover li:hover li:hover li:hover ul
+{background:#9C9AF1; border:1px solid #5E5BCC; border-top-color:#9C9AF1; }

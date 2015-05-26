@@ -1,0 +1,152 @@
+/* css definitions for the custom results toc */
+#resultsPanelContent table { width: 100%;}
+
+#resultsPanelContent div div {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.nodes {
+  border: none;
+  overflow: hidden;
+}
+
+.root,.layer,.result,.resultHighlight, .nodes>div {
+  float: left;
+  clear: left;
+  vertical-align: bottom;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.result:hover,.detail:hover,.resultHighlight, .detailHighlight {
+  background-color: #e7ebeb;
+}
+
+.result,.more {
+  cursor: hand;
+  cursor: pointer;
+}
+
+.expanded,.collapsed,.togglepad {
+  background-repeat: no-repeat;
+  width: 9px;
+  height: 1.5em;
+  min-height: 9px;
+  background-position: center;
+  float: left;
+  padding-right: 0.5em;
+}
+
+.expanded {
+  background-image: url("../images/minus.gif");
+}
+
+.collapsed {
+  background-image: url("../images/plus.gif");
+}
+
+.more {
+  background-image: url("../images/window/pop.gif");
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 1.5em;
+  min-height: 12px;
+  background-position: center;
+  float: right;
+  clear: none;
+}
+
+.check {
+  height: 1.5em;
+  float: left;
+  padding-right: 0.5em;
+  margin-top: 0em;
+}
+
+.root .image,.layer .image,.result .image {
+  float: left;
+  clear: none;
+}
+
+.label {
+  float: left;
+  clear: none;
+  white-space: nowrap;
+}
+
+.root {
+  margin-top: 0.5em;
+}
+
+.root .collapsed {
+  
+}
+
+.root .label {
+  font-weight: bold;
+}
+
+.layer {
+}
+
+.layer .label {
+  font-weight: normal;
+}
+
+.result {
+}
+
+.result .label {
+  font-weight: normal;
+}
+
+.result .more {
+  margin-right: 2.5em;
+}
+
+.detail, .detailHighlight {
+  float: left;
+  clear: both;
+  overflow: auto;
+  width: 100%;
+  padding-bottom: .75em;
+}
+
+.detail table, .detailHighlight table {
+  border-spacing: 1px;
+  border: 0px solid #fff;
+  border-collapse: collapse;
+  background-color: transparent;
+  overflow: auto;
+}
+
+.detail table td, .detailHighlight table td {
+  padding: 0.15em;
+  border-bottom: 1px solid #dedede;
+  font-size: 90%;
+}
+
+table.moreMenu {
+  border: 1px solid #ccc;
+  background-color: #fefefe;
+  width: 10em;
+  overflow-x: auto;
+  padding: 5px;
+  -moz-border-radius: 0px 8px 8px 8px;
+}
+
+table.moreMenu>tbody>tr>td {
+  border: 1px solid #f7f7f7;
+  cursor: hand;
+  cursor: pointer;
+  padding: 3px;
+  font-size: 85%;
+}
+
+table.moreMenu>tbody>tr>td:hover {
+  border: 1px solid #dedede;
+  background-color: #eff1f3;
+  cursor: hand;
+  cursor: pointer;
+}

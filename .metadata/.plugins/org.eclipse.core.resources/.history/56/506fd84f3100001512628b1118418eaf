@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Web Mapping Application Help</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="HelpFunctions.js" ></script>
+</head>
+<body>
+    <script>writeHeader();</script>
+    
+    <p class="sectionHead">Find</p>
+    
+    <h1>Identify features on the map</h1>
+    
+    <p>If you want to know about a feature on the map, you
+        can get more information by using the identify feature.</p>
+        
+    <h4>To identify a feature</h4>
+    
+    <ol>
+        <li><p>In the <a href="ToolReference.htm">Toolbar</a>,
+            click the Identify button.
+            <img src="../images/tasks/maptools/identify.png" width="25" height="25" align="absmiddle" />.
+            The button changes to a pressed appearance 
+            <img src="../images/tasks/maptools/identifyD.png" width="25" height="25" align="absmiddle" />.
+            (If no Identify button is visible, then the Identify
+            function is not available in this application.)</p>
+        </li>
+        <li><p>Click on the feature you want to identify. 
+            An entry for the identify results should appear in
+            the <b>Results</b> section of the 
+            <a href="GettingStarted.htm#Console">Console</a>. 
+            The result will 
+            display the coordinates of the location clicked.</p>
+            </li>
+        <li><p>Expand the location by clicking on the plus image
+            to the left of the coordinates, this displays the 
+            names of features found.
+            </p><p><img src="images/Results1.gif" width="304" height="446" /></p>
+        </li>
+        <li><p>
+		Click on the feature name to display other attributes of that feature in the <b>Result Details</b>
+		section. You can use the Actions defined on the results to Zoom, Highlight, or Clear Highlight. The same actions are also available by right clicking each result in the <b>Resluts</b> section.</p></li>
+        <li><p>See <a href="UsingResults.htm">Using Results</a> for more on
+            using the Results window.</p></li>
+    </ol>
+
+</body>
+</html>

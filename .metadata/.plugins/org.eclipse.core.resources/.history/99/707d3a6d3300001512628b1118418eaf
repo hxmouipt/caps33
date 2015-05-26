@@ -1,0 +1,10 @@
+package javax.servlet.http;
+
+public class HttpServletRequest {
+
+	public Object getRemoteUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

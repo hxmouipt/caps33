@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN" "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+  <managed-bean>
+    <managed-bean-name>map</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebMap</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>imageFormat</property-name>
+      <value>PNG</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>toc</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebToc</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>expandLevel</property-name>
+      <value>1</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>overview</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebOverview</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>geocode</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebGeocode</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>query</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.query.WebQuery</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>graphics</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebGraphics</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>results</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.results.WebResults</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>extentHistory</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.ExtentHistory</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>northArrow</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebNorthArrow</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>scaleBar</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.WebScaleBar</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>resultsView</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.results.WebResultsToc</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+<!--
+  <managed-bean>
+    <managed-bean-name>myAttribute</managed-bean-name>
+    <managed-bean-class>com.yourcompany.MyAttribute</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>myProperty</property-name>
+      <value>myValue</value>
+    </managed-property>
+  </managed-bean>
+-->
+</faces-config>

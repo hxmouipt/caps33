@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<adf>
+  <ags>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;ags[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ags.data.AGSLocalMapResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;user&lt;/property-name&gt;
+          &lt;value&gt;#{agsUser[COUNTER]}&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;serverObjectName&lt;/property-name&gt;
+          &lt;value&gt;[AGS_SERVER_OBJECT_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;hosts&lt;/property-name&gt;
+          &lt;list-entries&gt;
+            &lt;value&gt;[AGS_HOST]&lt;/value&gt;
+          &lt;/list-entries&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{agsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;tile&lt;/key&gt;
+              &lt;value&gt;#{agsTile}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{agsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{agsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;query&lt;/key&gt;
+              &lt;value&gt;#{agsQuery}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;ags[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{ags[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+
+    <user>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;agsUser[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ags.data.AGSUser&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;domain&lt;/property-name&gt;
+          &lt;value&gt;[AGS_DOMAIN]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;userName&lt;/property-name&gt;
+          &lt;value&gt;[AGS_USER_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;password&lt;/property-name&gt;
+          &lt;value&gt;[AGS_PASSWORD]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;passwordEncrypted&lt;/property-name&gt;
+          &lt;value&gt;[AGS_PASSWORD_ENCRYPTED]&lt;/value&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server user [END] --&gt;
+    </user>
+
+    <task-list>EMPTY</task-list>
+
+  </ags>
+
+  <agsext>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;agsext[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ags.data.AGSLocalExtensionsResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;user&lt;/property-name&gt;
+          &lt;value&gt;#{agsUser[COUNTER]}&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;serverObjectName&lt;/property-name&gt;
+          &lt;value&gt;[AGS_SERVER_OBJECT_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;hosts&lt;/property-name&gt;
+          &lt;list-entries&gt;
+            &lt;value&gt;[AGS_HOST]&lt;/value&gt;
+          &lt;/list-entries&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{agsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;tile&lt;/key&gt;
+              &lt;value&gt;#{agsTile}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{agsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{agsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;query&lt;/key&gt;
+              &lt;value&gt;#{agsQuery}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;networkAnalyst&lt;/key&gt;
+              &lt;value&gt;#{agsNetworkAnalyst}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;agsext[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{agsext[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+
+    <user>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;agsUser[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ags.data.AGSUser&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;domain&lt;/property-name&gt;
+          &lt;value&gt;[AGS_DOMAIN]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;userName&lt;/property-name&gt;
+          &lt;value&gt;[AGS_USER_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;password&lt;/property-name&gt;
+          &lt;value&gt;[AGS_PASSWORD]&lt;/value&gt;
+        &lt;/managed-property&gt;
+	&lt;managed-property&gt;
+	  &lt;property-name&gt;passwordEncrypted&lt;/property-name&gt;
+	  &lt;value&gt;[AGS_PASSWORD_ENCRYPTED]&lt;/value&gt;
+	&lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server user [END] --&gt;
+    </user>
+
+    <task-list>routing</task-list>
+      
+  </agsext>
+
+  <agsws>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;agsws[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ags.data.AGSMapResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;endPointURL&lt;/property-name&gt;
+          &lt;value&gt;[AGSWS_END_POINT_URL]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{agsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;tile&lt;/key&gt;
+              &lt;value&gt;#{agsTile}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{agsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{agsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;query&lt;/key&gt;
+              &lt;value&gt;#{agsQuery}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server Web Service resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;agsws[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{agsws[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+    
+    <task-list>EMPTY</task-list>
+    
+  </agsws>
+
+  <agswsext>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;agswsext[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ags.data.AGSExtensionsResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;endPointURL&lt;/property-name&gt;
+          &lt;value&gt;[AGSWS_END_POINT_URL]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{agsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;tile&lt;/key&gt;
+              &lt;value&gt;#{agsTile}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{agsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{agsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;query&lt;/key&gt;
+              &lt;value&gt;#{agsQuery}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;networkAnalyst&lt;/key&gt;
+              &lt;value&gt;#{agsNetworkAnalyst}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server Web Service resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;agswsext[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{agswsext[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+    
+    <task-list>routing</task-list>
+    
+  </agswsext>
+  
+  <agsejb>
+    <managedbean>    
+       &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;agsejb[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.ejb.data.EJBResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;jndiNames&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;[AGSEJB_MAP_JNDI_NAME]&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;jndiConnectionEnvProperties&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;java.naming.factory.initial&lt;/key&gt;
+              &lt;value&gt;org.jnp.interfaces.NamingContextFactory&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;!-- AGSEJB APPSERVER SPECIFIC ENTRIES [START] --&gt;
+            &lt;!-- AGSEJB APPSERVER SPECIFIC ENTRIES [END] --&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{ejbMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{ejbOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{ejbToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;query&lt;/key&gt;
+              &lt;value&gt;#{ejbQuery}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcGIS Server EJB resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;agsejb[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{agsejb[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+
+    <appserver>
+      <property>
+            &lt;map-entry&gt;
+              &lt;key&gt;[AGSEJB_KEY]&lt;/key&gt;
+              &lt;value&gt;[AGSEJB_VALUE]&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;!-- AGSEJB APPSERVER SPECIFIC ENTRIES [END] --&gt;
+      </property>
+    </appserver>
+    
+    <task-list>EMPTY</task-list>
+    
+  </agsejb>
+
+  <aims>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;aims[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.aims.data.AIMSMapResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;hostName&lt;/property-name&gt;
+          &lt;value&gt;[AIMS_HOST_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;port&lt;/property-name&gt;
+          &lt;value&gt;[AIMS_PORT]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;serviceName&lt;/property-name&gt;
+          &lt;value&gt;[AIMS_SERVICE_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;!-- Specify only those functionalities which are used by the source --&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{aimsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{aimsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{aimsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;query&lt;/key&gt;
+              &lt;value&gt;#{aimsQuery}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcIMS resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;aims[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{aims[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+
+   <task-list>EMPTY</task-list>    
+
+  </aims>
+
+  <wms>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;wms[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.wms.data.WMSMapResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;wmsURL&lt;/property-name&gt;
+          &lt;value&gt;[WMS_URL]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{wmsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{wmsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{wmsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for WMS resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;wms[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{wms[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+    
+    <task-list>EMPTY</task-list>
+    
+  </wms>
+
+  <aws>
+    <managedbean>
+      &lt;managed-bean&gt;
+        &lt;managed-bean-name&gt;aws[COUNTER]&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;com.esri.adf.web.aws.data.AWSMapResource&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;userName&lt;/property-name&gt;
+          &lt;value&gt;[USER_NAME]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;password&lt;/property-name&gt;
+          &lt;value&gt;[PASSWORD]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;dataSource&lt;/property-name&gt;
+          &lt;value&gt;[AWS_DATA_SOURCE]&lt;/value&gt;
+        &lt;/managed-property&gt;
+        &lt;managed-property&gt;
+          &lt;property-name&gt;functionalities&lt;/property-name&gt;
+          &lt;map-entries&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;map&lt;/key&gt;
+              &lt;value&gt;#{awsMap}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;toc&lt;/key&gt;
+              &lt;value&gt;#{awsToc}&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+              &lt;key&gt;overview&lt;/key&gt;
+              &lt;value&gt;#{awsOverview}&lt;/value&gt;
+            &lt;/map-entry&gt;
+          &lt;/map-entries&gt;
+        &lt;/managed-property&gt;
+      &lt;/managed-bean&gt;
+      &lt;!-- Managed bean for ArcWeb service resource [END] --&gt;
+    </managedbean>
+
+    <resource>
+    	&lt;map-entry&gt;
+              &lt;key&gt;aws[COUNTER]&lt;/key&gt;
+              &lt;value&gt;#{aws[COUNTER]}&lt;/value&gt;
+        &lt;/map-entry&gt;     
+      &lt;!-- Resources [END] --&gt;
+    </resource>
+    
+    <task-list>EMPTY</task-list>
+    
+  </aws>
+
+  <tasks>
+    <routing>
+      <managedbean>
+          &lt;managed-bean&gt;
+            &lt;managed-bean-name&gt;routingTask&lt;/managed-bean-name&gt;
+            &lt;managed-bean-class&gt;com.esri.adf.web.ags.tasks.RoutingTask&lt;/managed-bean-class&gt;      
+            &lt;managed-bean-scope&gt;session&lt;/managed-bean-scope&gt;
+            &lt;managed-property&gt;      
+              &lt;property-name&gt;webContext&lt;/property-name&gt;      
+              &lt;value&gt;#{mapContext}&lt;/value&gt;      
+            &lt;/managed-property&gt;
+          &lt;/managed-bean&gt;     
+          &lt;!-- Tasks [END] --&gt;
+        </managedbean>
+      <jsptag>
+          &lt;!-- TASKS --&gt;
+          &lt;a:task mapId="map1" id="routeTask" value="#{routingTask}" taskInfo="#{routingTask.taskInfo}" style="width:305px;height:130px;"/&gt;
+        </jsptag>
+      <htmloption>
+          &lt;!-- TASK OPTIONS --&gt;
+          &lt;option value="win_routeTask"&gt;Find Route&lt;/option&gt;
+        </htmloption>
+    </routing>
+  </tasks>
+
+  <common>
+    <task-list>EMPTY</task-list>
+  </common>
+
+</adf>

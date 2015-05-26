@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN" "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+  <managed-bean>
+    <display-name>AJAXRenderers</display-name>
+    <managed-bean-name>AJAXRenderers</managed-bean-name>
+    <managed-bean-class>java.util.ArrayList</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <list-entries>
+      <value>#{ajaxMapRenderer}</value>
+      <value>#{ajaxOverviewRenderer}</value>
+      <value>#{ajaxTocRenderer}</value>
+      <value>#{ajaxToolbarRenderer}</value>
+      <value>#{ajaxTaskRenderer}</value>
+      <value>#{ajaxPrintTaskRenderer}</value>
+      <value>#{ajaxEditRenderer}</value>
+      <!--value>#{ajaxGpAsyncTaskResultsRenderer}</value-->
+      <value>#{ajaxMapViewerElementsRenderer}</value>
+      <value>#{ajaxMapViewerGpAsyncTaskResultsRenderer}</value>
+    </list-entries>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxMapRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.faces.renderkit.xml.ajax.MapRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxOverviewRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.faces.renderkit.xml.ajax.OverviewRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxTocRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.faces.renderkit.xml.ajax.TocRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxToolbarRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.faces.renderkit.xml.ajax.ToolbarRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxTaskRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.faces.renderkit.xml.ajax.TaskRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxPrintTaskRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.tasks.ajax.PrintTaskRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxEditRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.ags.faces.renderkit.xml.ajax.EditRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <!--managed-bean>
+    <managed-bean-name>ajaxGpAsyncTaskResultsRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.ags.faces.renderkit.xml.ajax.GPAsyncTaskResultsRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean-->
+
+  <!-- Web Mapping Application Specific Renderers -->
+  <managed-bean>
+    <managed-bean-name>ajaxMapViewerElementsRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.MapViewerElementsRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>ajaxMapViewerGpAsyncTaskResultsRenderer</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.templates.GPAsyncTaskResultsRenderer</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+</faces-config>

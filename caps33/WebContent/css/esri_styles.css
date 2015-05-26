@@ -1,0 +1,127 @@
+/* EsriMap */
+table.esriMapNoData { position:absolute; border:1px solid #eee; color:#bbb; margin:0px; padding:0px; }
+img.esriMapImage { position:absolute; border:none; margin:0px; padding:0px;  }
+img.esriLoadingImage { position:absolute; top:5px; right:5px; }
+
+/* EsriWindow */
+table.esriWindow { border:1px solid #999; border-top: none; overflow:hidden; margin:0px; padding:0px; background-color:#fff; z-index:110; }
+table.esriWindowTitleBar { background-repeat:repeat-x; border-bottom:0px solid #999; overflow:hidden; height:24px; margin-bottom:0px; }
+table.esriWindowTitleBar td { vertical-align: middle; }
+span.esriWindowTitleText { color:#fff; font-family:verdana; font-size:75%; font-weight:bold; padding-left:5px; overflow:hidden; }
+div.esriWindowContent { overflow:auto; position:relative; padding:0px; margin:0px; }
+
+table.esriWindowLayout { padding:0px; margin:0px; }
+table.esriWindowMoveOutline { border:1px solid #fff; background-color:#000; z-index:99; }
+div.esriWindowStatusBar { background-color:#c1c1c1; margin:0px; margin-top:3px; padding:0px; border:1px solid #666; overflow:hidden; }
+span.esriWindowStatusBarText { color:#444; font-family:verdana; font-size:65%; padding-left:2px; }
+
+
+td.esriWindowCellTL { background-color:#999; width:0px; height:0px; }
+td.esriWindowCellT { background-color:#999; height:0px; }
+td.esriWindowCellTR { background-color:#999; width:0px; height:0px; }
+td.esriWindowCellL { background-color:#999; width:0px; }
+td.esriWindowCellC { margin:0px; padding:0px; }
+td.esriWindowCellR { background-color:#999; width:0px; }
+td.esriWindowCellBL { background-color:#999; width:0px; height:0px; }
+td.esriWindowCellB { background-color:#999; height:0px }
+td.esriWindowCellBR { background-color:#999; width:0px; height:0px; }
+img.esriWindowCollapse { background-image:url('../images/window/collapse.gif'); width:22px; height:12px; cursor:pointer; }
+img.esriWindowExpand { background-image:url('../images/window/expand.gif'); width:22px; height:12px; cursor:pointer; }
+img.esriWindowClose { background-image:url('../images/window/close.gif'); width:20px; height:20px; cursor:pointer; }
+
+/* EsriToc */
+td.esriTocLabel { color:#000; font-family:Arial,Sans-Serif; font-size:90%; font-weight:normal; }
+td.esriTocLabelSelected { color:#000; font-family:Arial,Sans-Serif; font-size:90%; font-weight:bold; }
+td.esriTocLabelDisabled { color:#ccc; font-family:Arial,Sans-Serif; font-size:90%; font-weight:normal; }
+td.esriTocLabelSelectedDisabled { color:#ccc; font-family:Arial,Sans-Serif; font-size:90%; font-weight:bold; }
+
+/* EsriToc ContextMenu */
+table.esriContextMenu { border:1px outset #000; background-color:#cdcdcd; margin:0px; width:200px; }
+td.esriContextMenuItem { font:menu; padding:1px; background-color:transparent; font-weight:normal; color:#000; }
+td.esriContextMenuItemActive { font:menu; padding:1px; background-color:#0a246a; font-weight:bold; color:#fff; }
+
+/* Tools */
+input.esriToolDefault { border:1px outset #000; background-color:transparent; }
+input.esriToolHover { border:1px outset #000; background-color:#fcd279; }
+input.esriToolSelected { border:1px inset #000; background-color:#e59700; }
+input.esriToolDisabled { border:1px solid transparent; background-color:#ccc; cursor:default; }
+
+/* EsriToolbar */
+div.esriToolbar { background-color:transparent; }
+
+/* EsriTextToolbar */
+div.esriTextToolbarDefault { background-color:#cdcdcd; border:1px solid #aaa; color:#000; cursor:pointer; font-family:verdana; font-size:80%; padding:5px; width:100%; }
+div.esriTextToolbarHover { background-color:#f3f3cc; border:1px solid #aaa; color:#000; cursor:pointer; font-family:verdana; font-size:80%; padding:5px; width:100%; }
+div.esriTextToolbarSelected { background-color:#cce3cc; border:1px solid #aaa; color:#000; cursor:pointer; font-family:verdana; font-size:80%; padding:5px; width:100%; }
+div.esriTextToolbarDisabled { background-color:#cdcdcd; border:1px solid #aaa; color:#8D8D8D; cursor:pointer; font-family:verdana; font-size:80%; padding:5px; width:100%; }
+
+/* EsriImageToolbar */
+img.esriImageToolbarDefault { border:none; cursor:pointer; margin:1px; padding:1px; }
+img.esriImageToolbarHover { border:1px outset #dbdbe4; cursor:pointer; margin:0px; padding:0px; }
+img.esriImageToolbarSelected { border:1px inset #dbdbe4; cursor:pointer; margin:0px; padding:0px; }
+img.esriImageToolbarDisabled { border:none; cursor:pointer; margin:1px; padding:1px; }
+
+/* EsriImageAndTextToolbar */
+div.esriImageAndTextToolbarDefault { border:none; cursor:pointer; margin:1px; padding:1px; }
+div.esriImageAndTextToolbarHover { border:1px outset #dbdbe4; cursor:pointer; margin:1px; padding:0px; }
+div.esriImageAndTextToolbarSelected { border:1px inset #dbdbe4; cursor:pointer; margin:1px; padding:0px; }
+div.esriImageAndTextToolbarDisabled { border:none; cursor:default; margin:1px; padding:1px; }
+
+td.esriImageAndTextToolbarDefault { cursor:pointer; font-family:verdana; font-size:80%; color:#000; }
+td.esriImageAndTextToolbarHover { cursor:pointer; font-family:verdana; font-size:80%; color:#000; }
+td.esriImageAndTextToolbarSelected { cursor:pointer; font-family:verdana; font-size:80%; color:#007; }
+td.esriImageAndTextToolbarDisabled { cursor:default; font-family:verdana; font-size:80%; color:#777; }
+
+/* EsriColorChooser */
+div.esriColorChooser { background-color:#fff; }
+span.esriColorChooserStatusText { font-family:verdana; font-size:70%; font-weight:lighter; padding-bottom:2px; }
+
+/* EsriScaleBar */
+div.esriScaleBar { position:absolute; bottom:10px; left:10px; z-index:99; padding:0px; margin:0px; }
+
+/* EsriOverview */
+table.esriOverviewNoData { width:100%; height:100%; color:#bbb; margin:0px; padding:0px; text-align:center; }
+
+/* EsriCallOut */
+.infowindow { position:absolute; font-size: 75%; z-index: 21;}
+.infowindow .window { background-color: #eee; background-image: none; background-repeat: no-repeat; border: 1px solid #999; padding: 0px; width: 250px; max-height: 250px;  overflow: hidden; font-family: Arial, Helvetica, sans-serif }
+.infowindow .window .title .select { background-color: transparent; border: 1px solid transparent; border-color: transparent; font-size: 100%; width: 200px; }
+.infowindow .window .title .select:hover { border-color: #555; background-color: #fff; }
+.infowindow .window .title { font-weight: bold; min-height: 1.3em; padding: 0.2em 2em 0.1em .2em;}
+.infowindow .window .hide { position: absolute; right: 0px; top: -2px; width: 20px; height: 20px; background-image: url(../images/window/callout/close.png); background-repeat: no-repeat; background-position: bottom;}
+.infowindow .window .toggleOn, .toggleOff { position: absolute; right: 20px; top: -2px; width: 20px; height: 20px; background-repeat: no-repeat; background-position: center; }
+.infowindow .window .toggleOn { background-image: url(../images/window/callout/expand.gif); }
+.infowindow .window .toggleOff { background-image: url(../images/window/callout/collapse.gif); }
+.infowindow .window .content { overflow: auto;height: 72px; margin: 2px; border-top: 1px solid #000; padding: 5px;}
+.infowindow .window .footer { border-top: 1px solid #999; padding: 3px;margin: 2px;}
+.infowindow .window .content .subcontent, .infowindow .window .footer { display: none; overflow: inherit; padding: 3px; }
+.infowindow .window .footer .footercontent { display: none; overflow: inherit; }
+.infowindow .window .footer .footercontent .link { color: darkblue; text-decoration: underline; cursor: hand; cursor: pointer;}
+.infowindow .lowerright, .infowindow .lowerleft,.infowindow .upperright,.infowindow .upperleft { position: absolute;}
+.infowindow .lowerright { left: 15px; top: 0px; -moz-border-radius-topleft: 0px; }
+.infowindow .lowerleft { right: 15px; top: 0px; -moz-border-radius-topright: 0px; }
+.infowindow .upperleft { right: 15px; bottom: 0px; -moz-border-radius-bottomright: 0px; }
+.infowindow .upperright { left: 15px; bottom: 0px; -moz-border-radius-bottomleft: 0px; }
+.infowindow .arrows { overflow: visible; }
+.infowindow .arrows .lowerright, .infowindow .arrows .lowerleft, .infowindow .arrows .upperright, .infowindow .arrows .upperleft {width: 16px; height: 16px; display: block;}
+.infowindow .arrows .lowerright {background-image: url(../images/window/callout/arrows-white-tl.png); background-position:0px 0px; left: 0px; top: 0px; }
+.infowindow .arrows .lowerleft {background-image: url(../images/window/callout/arrows-white-tr.png); background-position: -16px 0px; right: 0px; top: 0px; }
+.infowindow .arrows .upperright {background-image: url(../images/window/callout/arrows-white-bl.png); background-position: 0px -16px; left: 0px; top: -16px; }
+.infowindow .arrows .upperleft {background-image: url('../images/window/callout/arrows-white-br.png'); background-position:  -16px; right: 0px; top: -16px }
+.infowindow .window .content table.default-template { background-color: #fff; border-collapse: collapse; margin: 0px; width: 90%; }
+.infowindow .window .content table.default-template .key-cell, .infowindow .window .content table.default-template .value-cell { border-bottom: 1px solid #dedede; }
+.infowindow .window .content table.default-template .key-cell {}
+.infowindow .window .content table.default-template .value-cell {}
+
+/*EsriButtonControl*/
+input.disabledButton { filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20); -moz-opacity: 0.2; opacity: 0.2;}
+input.hiddenButton { display:none;}
+div.attributesPanel { border: thin solid rgb(190, 190, 190); overflow: auto; height: 200px;}
+div.noAttributesPanel { border: thin solid rgb(190, 190, 190); width: 100%; overflow:auto; text-align: center; color: #444444; font-family: verdana; margin-bottom: 3px; }
+
+/* IE6 only property */
+* html .infowindow .window .hide { background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/window/callout/close.png');}
+* html .infowindow .arrows .lowerright {background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='images/window/callout/arrows-white-tl.png')};
+* html .infowindow .arrows .lowerleft {background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='images/window/callout/arrows-white-tr.png')};
+* html .infowindow .arrows .upperright {background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='images/window/callout/arrows-white-bl.png')};
+* html .infowindow .arrows .upperleft {background:transparent;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='images/window/callout/arrows-white-br.png')};

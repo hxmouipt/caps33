@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module context="caps33" name="caps33" path="E:/IT2014-09/===capstoneIII/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/caps33" type="j2ee"/>
+  <module context="cap0522" name="cap0522" path="E:/IT2014-09/===capstoneIII/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/cap0522" type="j2ee"/>
+</server>

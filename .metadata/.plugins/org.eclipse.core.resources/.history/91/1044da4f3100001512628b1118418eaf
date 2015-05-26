@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Web Mapping Application Help</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="HelpFunctions.js" ></script>
+</head>
+<body>
+    <script>writeHeader();</script>
+    
+    <p class="sectionHead">Explore the map</p>
+    
+    <h1>Using the Overview and Magnifier</h1>
+    
+    <h4>Overview</h4>
+    
+    <p>The Overview window displays a small map with the full extent
+        of the current map. The current map's extent is shown
+        in this window with a red rectangle.</p>
+        
+    <img src="images/OV_Large.gif" />
+    
+    <ul>
+        <li>Display the Overview window by clicking its down-arrow
+            in the <a href="GettingStarted.htm#Console">
+            Console</a>.</li>
+            
+        <li>The map can be re-centered by moving the red extent
+            rectangle. Click and drag on the red rectangle to
+            re-center the map.</li>
+            
+        <li>As you zoom the map in or out, the extent of the red rectangle changes.</li>
+            
+        <li>The Overview map may look different from the main map.
+            Layers may be visible at different map scales (zoom levels).
+            Also, all the multiple map services used in the main map may not be visible in
+			 the Overview map.</li>
+    </ul>
+
+</body>
+</html>

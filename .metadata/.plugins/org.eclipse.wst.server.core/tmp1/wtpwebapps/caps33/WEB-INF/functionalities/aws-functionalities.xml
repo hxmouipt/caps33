@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN" "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+  <managed-bean>
+    <managed-bean-name>awsMap</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.aws.data.AWSMapFunctionality</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>awsOverview</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.aws.data.AWSOverviewFunctionality</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>awsToc</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.aws.data.AWSTocFunctionality</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>awsGeocode</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.aws.data.AWSGeocodeFunctionality</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>awsQuery</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.aws.data.query.AWSQueryFunctionality</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+  
+</faces-config>

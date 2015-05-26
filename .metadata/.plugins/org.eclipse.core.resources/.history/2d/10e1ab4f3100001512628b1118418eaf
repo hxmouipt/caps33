@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN" "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+  <managed-bean>
+    <managed-bean-name>defaultGraphicsResource</managed-bean-name>
+    <managed-bean-class>com.esri.adf.web.data.graphics.GraphicsResource</managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+    <managed-property>
+      <property-name>alias</property-name>
+      <value>DefaultGraphicsResource</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>graphicsMap</managed-bean-name>
+    <managed-bean-class>
+      com.esri.adf.web.data.graphics.GraphicsMapFunctionality
+    </managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>graphicsToc</managed-bean-name>
+    <managed-bean-class>
+      com.esri.adf.web.data.graphics.GraphicsTocFunctionality
+    </managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>graphicsOverview</managed-bean-name>
+    <managed-bean-class>
+      com.esri.adf.web.data.graphics.GraphicsOverviewFunctionality
+    </managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>graphicsQuery</managed-bean-name>
+    <managed-bean-class>
+      com.esri.adf.web.data.graphics.query.GraphicsQueryFunctionality
+    </managed-bean-class>
+    <managed-bean-scope>none</managed-bean-scope>
+  </managed-bean>
+
+</faces-config>

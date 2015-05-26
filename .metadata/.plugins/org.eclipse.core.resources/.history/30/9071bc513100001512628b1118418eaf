@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ArcGIS</title>
+    <link rel="stylesheet" title="base" href="css/base-style.css" type="text/css" media="screen" />
+    <style type="text/css">
+      body { overflow:auto; }
+    </style>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" language="Javascript" src="js/esri_core.js"></script>
+    <script type="text/javascript" language="Javascript" src="js/mapviewer.js"></script>
+  </head>
+  <body>
+    <table style="width:100%; height:100%;">
+      <tbody>
+        <tr>
+          <td align="center"><img src="images/loading.gif" alt="Loading" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <span id="temp">&nbsp;</span>
+    <script type="text/javascript">
+      try {
+        var b = EsriUtils.getPageBounds();
+        document.body.removeChild(document.getElementById("temp"));
+        var pw = EsriUtils.getStyleValue(EsriUtils.getStyleByClassName("#panel").width);
+        var sw = EsriUtils.getStyleValue(EsriUtils.getStyleByClassName("#layoutslider").width);
+        var hh = EsriUtils.getStyleValue(EsriUtils.getStyleByClassName("#header").height);
+        var width = b.width - pw - sw - ieBuffer;
+        var height = b.height - hh;
+        document.write("<meta http-equiv='refresh' content='1; URL=mapviewer.jsf" + "?width=" + width + "&height=" + height + "'>");
+      }
+      catch (exception) {
+        document.write("<meta http-equiv='refresh' content='1; URL=mapviewer.jsf'>");
+      }
+    </script>
+  </body>
+</html>
